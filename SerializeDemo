@@ -1,0 +1,37 @@
+package com.psl.serialize;
+
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
+
+public class SerializeDemo {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Employee e = new Employee(2000, "Nik");
+
+		FileOutputStream fos = null;
+		ObjectOutputStream oos = null;
+
+		try {
+			fos = new FileOutputStream("demo.ser");
+			oos = new ObjectOutputStream(fos);
+			oos.writeObject(e);
+
+			System.out.println("Serialized");
+			e.displayEmployee();
+			System.out.println(e instanceof Employee);
+
+		} catch (FileNotFoundException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		} catch (IOException ex) {
+			// TODO Auto-generated catch block
+			ex.printStackTrace();
+		}
+
+	}
+
+	// oos.writeObeject(e);
+}
